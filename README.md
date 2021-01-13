@@ -1,4 +1,4 @@
-# du-n2t
+# du-haksa-telegram
 
 DU Notification to telegram
 
