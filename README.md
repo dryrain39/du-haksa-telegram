@@ -13,7 +13,7 @@ DU Notification to telegram
 ## 세팅
 
 1. config.json 의 first_run 을 true 로 세팅한 뒤 스크립트를 1회 동작시키십시오.
-2. config.json 의 first_run 을 false 로 세팅하고 메일 계정 정보를 입력하십시오.
+2. config.json 의 first_run 을 false 로 세팅하고 텔레그램 계정 정보를 입력하십시오.
 3. 서버에 스크립트를 계속 켜 두면 됩니다. 60초마다 자동으로 데이터를 가져옵니다.
 
 ## config.json
