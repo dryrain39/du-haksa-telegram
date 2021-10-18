@@ -1,8 +1,11 @@
 # du-haksa-telegram
 
-DU Notification to telegram
+[DU Notification to telegram](https://t.me/sw_dev)
 
-학사공지를 텔레그램으로 받아 볼 수 있습니다.
+대구대학교 학사공지를 [텔레그램](https://t.me/sw_dev)으로 받아 볼 수 있습니다.
+이 프로젝트 코드의 일부는 아래 프로젝트에 코드를 참고하여 제작되었습니다.
+
+참고한 프로젝트 : [du-n2m](https://github.com/dryrain39/du-n2m)
 
 ## 요구사항
 
