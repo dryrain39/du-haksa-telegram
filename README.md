@@ -1,5 +1,6 @@
 # du-haksa-telegram
 
+대구대학교 학사공지 알림 봇
 [DU Notification to telegram](https://t.me/sw_dev)
 
 대구대학교 학사공지를 [텔레그램](https://t.me/sw_dev)으로 받아 볼 수 있습니다.
