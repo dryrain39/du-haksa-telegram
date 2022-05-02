@@ -1,3 +1,4 @@
+import datetime
 import logging
 import os
 import time
@@ -11,11 +12,20 @@ from DU.telegram import send_telegram
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s [%(levelname)s] %(message)s',
 )
+rootLogger = logging.getLogger()
+logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
+fileHandler = logging.FileHandler("{0}/{1}.log".format(".", datetime.datetime.now().strftime("%Y-%m-%d")),
+                                  encoding="utf-8")
+fileHandler.setFormatter(logFormatter)
+rootLogger.addHandler(fileHandler)
+
+consoleHandler = logging.StreamHandler()
+consoleHandler.setFormatter(logFormatter)
+rootLogger.addHandler(consoleHandler)
 
 
-def work(config, element):
+def work(config, element, keyword):
     try:
         url = "https://www.daegu.ac.kr/article/DG159/detail/" + element[0]
 
@@ -25,6 +35,9 @@ def work(config, element):
         telegram_subject = r.title
         telegram_url = f"{url}"
 
+        if keyword not in r.title:
+            return
+
         send_telegram(config, telegram_subject, telegram_url)
         logging.info(element[1] + " 데이터를 보냈습니다.")
     except Exception as e:
@@ -32,7 +45,7 @@ def work(config, element):
     pass
 
 
-def main():
+def main(keyword):
     config = get_config()
     memory = []
 
@@ -49,7 +62,7 @@ def main():
         for e in current_list:
             if e not in memory:
                 if not config["first_run"]:
-                    work(config, e)
+                    work(config, e, keyword)
                     logging.info(str(x) + " 완료 3초 대기...")
                     time.sleep(3)
                 memory.append(e)
@@ -69,6 +82,6 @@ def main():
 
 if __name__ == '__main__':
     while True:
-        main()
+        keyword = input("키워드를 입력하세요")
+        main(keyword)
         time.sleep(60)
-
