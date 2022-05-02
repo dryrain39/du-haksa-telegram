@@ -23,7 +23,7 @@ def work(config, element):
         logging.info(element[1] + " 데이터를 가져왔습니다.")
 
         telegram_subject = r.title
-        telegram_url = f"원본: {url}"
+        telegram_url = f"{url}"
 
         send_telegram(config, telegram_subject, telegram_url)
         logging.info(element[1] + " 데이터를 보냈습니다.")
